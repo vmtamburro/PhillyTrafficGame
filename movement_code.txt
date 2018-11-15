@@ -1,0 +1,34 @@
+
+using UnityEngine;
+
+public class playerMovement : MonoBehaviour {
+
+    public Rigidbody rb;
+
+    //using a variable allows this
+    //to be modified in unity
+    public float forwardForce = 2000f;
+    public float sidewaysForce = 500f;
+
+
+	
+	// Update is called once per frame
+    // Use "FixedUpdate" when messing with physics
+	void FixedUpdate ()
+    {
+        //add a forward force
+        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+       
+        //getting user input from keyboard
+        //look into other player input
+        if(Input.GetKey("d"))
+        {
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+        }  
+    }
+}
